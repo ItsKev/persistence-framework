@@ -1,0 +1,4 @@
+name: PersistenceFramework
+main: net.itskev.persistenceframework.proxy.PersistenceFrameworkPlugin
+version: @VERSION@
+author: ItsKev

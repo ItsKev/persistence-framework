@@ -1,0 +1,5 @@
+main: net.itskev.persistenceframework.bukkit.PersistenceFrameworkPlugin
+name: PersistenceFramework
+version: @VERSION@
+author: ItsKev
+api-version: 1.17

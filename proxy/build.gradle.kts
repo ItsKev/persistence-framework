@@ -1,7 +1,8 @@
 repositories {
-    maven(url = "https://papermc.io/repo/repository/maven-public/")
+    maven("https://oss.sonatype.org/content/repositories/snapshots")
 }
 
 dependencies {
-    compileOnly("io.github.waterfallmc:waterfall-api:1.17-R0.1-SNAPSHOT")
+    implementation(project(":persistence-framework-common"))
+    compileOnly("net.md-5:bungeecord-api:1.16-R0.4")
 }

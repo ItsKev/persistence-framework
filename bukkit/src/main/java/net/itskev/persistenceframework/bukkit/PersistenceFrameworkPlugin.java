@@ -1,17 +1,14 @@
-package net.itskev.persistenceframework.proxy;
+package net.itskev.persistenceframework.bukkit;
 
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoCredential;
-import lombok.Getter;
 import net.itskev.persistenceframework.common.api.MongoDbService;
 import net.itskev.persistenceframework.common.service.DefaultMongoDbService;
 import net.itskev.persistenceframework.common.util.EnvironmentVariableHelper;
-import net.md_5.bungee.api.plugin.Plugin;
+import org.bukkit.plugin.ServicePriority;
+import org.bukkit.plugin.java.JavaPlugin;
 
-@Getter
-public class PersistenceFrameworkPlugin extends Plugin {
-
-  private MongoDbService mongoDbService;
+public class PersistenceFrameworkPlugin extends JavaPlugin {
 
   @Override
   public void onEnable() {
@@ -20,9 +17,11 @@ public class PersistenceFrameworkPlugin extends Plugin {
     String username = EnvironmentVariableHelper.getEnvironmentVariable("USERNAME");
     String password = EnvironmentVariableHelper.getEnvironmentVariable("PASSWORD");
 
-    mongoDbService = new DefaultMongoDbService(
+    MongoDbService mongoDbService = new DefaultMongoDbService(
         new ConnectionString(connectionString),
         MongoCredential.createCredential(username, authenticationDatabase, password.toCharArray())
     );
+
+    getServer().getServicesManager().register(MongoDbService.class, mongoDbService, this, ServicePriority.Normal);
   }
 }

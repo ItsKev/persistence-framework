@@ -16,6 +16,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.mongojack.JacksonMongoCollection;
 
 import java.net.InetSocketAddress;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -39,7 +40,7 @@ class DefaultMongoDbServiceTest {
   void shouldSavePojo() {
     // Arrange
     String name = "Testee";
-    Animal animal = new Animal(name, 9, new Bark(2.4), false, Animal.Gender.FEMALE);
+    Animal animal = new Animal(UUID.randomUUID(), name, 9, new Bark(2.4), false, Animal.Gender.FEMALE);
 
     JacksonMongoCollection<Animal> collection = testee.getCollection("database", "testee", Animal.class);
 
@@ -56,7 +57,7 @@ class DefaultMongoDbServiceTest {
   void shouldDeletePojo() {
     // Arrange
     String name = "Tester";
-    Animal animal = new Animal(name, 12, new Meow(5), true, Animal.Gender.MALE);
+    Animal animal = new Animal(UUID.randomUUID(), name, 12, new Meow(5), true, Animal.Gender.MALE);
 
     JacksonMongoCollection<Animal> collection = testee.getCollection("database", "testee", Animal.class);
     collection.insertOne(animal);
@@ -76,7 +77,7 @@ class DefaultMongoDbServiceTest {
     String name = "IncrementalTestee";
     int initialMeowCount = 6;
     int decrement = 2;
-    Animal animal = new Animal(name, 2, new Meow(initialMeowCount), false, Animal.Gender.MALE);
+    Animal animal = new Animal(UUID.randomUUID(), name, 2, new Meow(initialMeowCount), false, Animal.Gender.MALE);
 
     JacksonMongoCollection<Animal> collection = testee.getCollection("database", "testee", Animal.class);
     collection.insertOne(animal);

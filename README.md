@@ -5,6 +5,34 @@ to store and work with POJO's directly.
 
 An example can be found in the tests [here](common/src/test/java/net/itskev/persistenceframework/common/service/DefaultMongoDbServiceTest.java).
 
+## Usage
+### Gradle
+```java
+repositories {
+    maven(url = "https://jitpack.io")
+}
+
+dependencies {
+    implementation("com.github.itskev:persistence-framework:v1.0.0")
+}
+```
+
+### Maven
+```xml
+<repositories>
+  <repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+  </repository>
+</repositories>
+
+<dependency>
+  <groupId>com.github.ItsKev</groupId>
+  <artifactId>persistence-framework</artifactId>
+  <version>v1.0.0</version>
+</dependency>
+```
+
 ## Environment variables
 | Name  | Description  |
 |---|---|

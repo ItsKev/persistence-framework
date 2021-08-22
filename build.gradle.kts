@@ -1,5 +1,6 @@
 plugins {
     java
+    `maven-publish`
     id("com.github.johnrengelman.shadow") version "7.0.0"
 }
 
@@ -10,6 +11,7 @@ repositories {
 subprojects {
     apply {
         plugin("java")
+        plugin("maven-publish")
         plugin("com.github.johnrengelman.shadow")
     }
 
@@ -51,5 +53,23 @@ subprojects {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
         withJavadocJar()
+    }
+
+    publishing {
+        repositories {
+            maven {
+                name = "GitHubPackages"
+                url = uri("https://maven.pkg.github.com/ItsKev/persistence-framework")
+                credentials {
+                    username = System.getenv("USERNAME")
+                    password = System.getenv("TOKEN")
+                }
+            }
+        }
+        publications {
+            register<MavenPublication>("gpr") {
+                from(components["java"])
+            }
+        }
     }
 }

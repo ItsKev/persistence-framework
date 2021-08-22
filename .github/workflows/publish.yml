@@ -17,9 +17,9 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Build with Gradle
-        run: gradlew build
+        run: ./gradlew build
       - name: Publish to GitHub Packages
-        run: gradlew publish
+        run: ./gradlew publish
         env:
           USERNAME: ${{ secrets.USERNAME }}
           TOKEN: ${{ secrets.TOKEN }}

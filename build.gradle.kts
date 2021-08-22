@@ -56,18 +56,12 @@ subprojects {
     }
 
     publishing {
-        repositories {
-            maven {
-                name = "GitHubPackages"
-                url = uri("https://maven.pkg.github.com/ItsKev/persistence-framework")
-                credentials {
-                    username = System.getenv("USERNAME")
-                    password = System.getenv("TOKEN")
-                }
-            }
-        }
         publications {
-            register<MavenPublication>("gpr") {
+            create<MavenPublication>("java") {
+                groupId = project.group.toString()
+                artifactId = project.name.toLowerCase()
+                version = project.version.toString()
+
                 from(components["java"])
             }
         }

@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.itskev:persistence-framework:v1.0.0")
+    implementation("com.github.ItsKev.persistence-framework:persistence-framework-proxy:v1.0.0:all")
 }
 ```
 
@@ -27,9 +27,10 @@ dependencies {
 </repositories>
 
 <dependency>
-  <groupId>com.github.ItsKev</groupId>
-  <artifactId>persistence-framework</artifactId>
+  <groupId>com.github.ItsKev.persistence-framework</groupId>
+  <artifactId>persistence-framework-bukkit</artifactId>
   <version>v1.0.0</version>
+  <classifier>all</classifier>
 </dependency>
 ```
 
